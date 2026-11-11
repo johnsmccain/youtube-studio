@@ -1,0 +1,16 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Run Module Tests on Service Change",
+      "trigger": "PostFileSave",
+      "description": "Run API module tests when a service file inside apps/api/src/modules is saved",
+      "matcher": "apps/api/src/modules/.*\\.service\\.ts$",
+      "action": {
+        "type": "command",
+        "command": "cd /home/chazy/Desktop/projects/software-firm/youtube-content-studio && FILE=\"$1\" && if echo \"$FILE\" | grep -q \"apps/api/src/modules\"; then MODULE=$(echo \"$FILE\" | sed 's|.*/modules/\\([^/]*\\)/.*|\\1|'); pnpm --filter @repo/api test -- --reporter=verbose 2>&1 | tail -30; fi",
+        "timeout": 120
+      }
+    }
+  ]
+}

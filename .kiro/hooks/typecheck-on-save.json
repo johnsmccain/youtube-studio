@@ -1,0 +1,16 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "TypeScript Check on Save",
+      "trigger": "PostFileSave",
+      "action": {
+        "type": "command",
+        "command": "cd /home/chazy/Desktop/projects/software-firm/youtube-content-studio && pnpm typecheck 2>&1 | tail -20"
+      },
+      "description": "Run TypeScript type-check across the monorepo after any .ts or .tsx file is saved",
+      "matcher": "\\.(ts|tsx)$",
+      "enabled": true
+    }
+  ]
+}

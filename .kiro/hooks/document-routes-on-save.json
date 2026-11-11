@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Document API Routes on Save",
+      "trigger": "PostFileSave",
+      "description": "Remind to document API endpoints when a routes file is saved",
+      "matcher": "apps/api/src/modules/.*\\.routes\\.ts$",
+      "action": {
+        "type": "agent",
+        "prompt": "A route file inside apps/api was just saved. Check whether the routes it defines are documented. If any endpoint is missing JSDoc or an OpenAPI/Swagger comment describing its method, path, request body, query params, and response shape, flag each missing one and add minimal inline documentation. Do not change any business logic."
+      }
+    }
+  ]
+}
